@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTEL DE CONDORCET</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row bg-primary navbar navbar-expand-lg ">
+        <div class="col-md-3">
+            <h2>HOTEL DE CONDORCET</h2>
+        </div>
+        <div class="col-md-2">
+            <a href="/" class="btn btn-light">Employes</a>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <a href="/chambre" class="btn btn-light">Chambres</a>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <a href="/logout" class="btn btn-danger">Deconnexion</a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row navbar navbar-expand-lg">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <a href="/employe/new" class="btn btn-primary">Ajouter Employe</a>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row navbar navbar-expand-lg ">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Poste</th>
+                    <th>Telephone</th>
+                    <th>Action1</th>
+                    <th>Action2</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="employe, status : ${employes}">
+                    <td th:text="${status.count}"></td>
+                    <td th:text="${employe.nom}"></td>
+                    <td th:text="${employe.prenom}"></td>
+                    <td th:text="${employe.posteemploye}"></td>
+                    <td th:text="${employe.telephone}"></td>
+                    <td>
+                        <a th:href="@{/employe/edit/{idemploye}(idemploye=${employe.idemploye})}" class="btn btn-primary">Modifier</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/employe/delete/{idemploye}(idemploye=${employe.idemploye})}" class="btn btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</body>
+</html>

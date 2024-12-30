@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTEL DE CONDORCET</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="row bg-primary navbar navbar-expand-lg ">
+    <div class="col-md-3">
+        <h2>HOTEL DE CONDORCET</h2>
+    </div>
+    <div class="col-md-2">
+        <a href="/" class="btn btn-light">Employes</a>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+        <a href="/chambre" class="btn btn-light">Chambres</a>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+        <a href="/logout" class="btn btn-danger">Deconnexion</a>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row navbar navbar-expand-lg">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <a href="/chambre/chambre/new" class="btn btn-primary">Ajouter Chambre</a>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<div class="row navbar navbar-expand-lg ">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <table class="table ">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Prix</th>
+                <th>Etat</th>
+                <th>Capacite</th>
+                <th>Action1</th>
+                <th>Action2</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="chambre, status : ${chambres}">
+                <td th:text="${status.count}"></td>
+                <td th:text="${chambre.typechambre}"></td>
+                <td th:text="${chambre.prix}"></td>
+                <td th:text="${chambre.etatchambre}"></td>
+                <td th:text="${chambre.capacite}"></td>
+                <td>
+                    <a th:href="@{/chambre/chambre/edit/{idchambre}(idchambre=${chambre.idchambre})}" class="btn btn-primary">Modifier</a>
+                </td>
+                <td>
+                    <a th:href="@{/chambre/chambre/delete/{idchambre}(idchambre=${chambre.idchambre})}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+</body>
+</html>
